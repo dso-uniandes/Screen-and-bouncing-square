@@ -1,5 +1,7 @@
 import esper
 import pygame
+import math
+import random
 
 from src.ecs.components.c_enemy_spawner import CEnemySpawner
 
@@ -38,6 +40,18 @@ def system_enemy_spawner(world: esper.World, delta_time: float):
                         enemy_cfg["color"]["r"],
                         enemy_cfg["color"]["g"],
                         enemy_cfg["color"]["b"]
+                    )
+
+                    speed = random.uniform(
+                        enemy_cfg["min_velocity"],
+                        enemy_cfg["max_velocity"]
+                    )
+
+                    angle = random.uniform(0, 2 * math.pi)
+
+                    velocity = pygame.Vector2(
+                        math.cos(angle) * speed,
+                        math.sin(angle) * speed
                     )
 
                     event["triggered"] = True
