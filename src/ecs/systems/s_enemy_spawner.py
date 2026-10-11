@@ -9,3 +9,11 @@ def system_enemy_spawner(world: esper.World, delta_time: float):
     c_spawner: CEnemySpawner
     for _, c_spawner in components:
         c_spawner.elapsed_time += delta_time
+
+        for event in c_spawner.events:
+            if event["triggered"]:
+                continue
+
+            if c_spawner.elapsed_time >= event["time"]:
+                event["triggered"] = True
+                print(f'Event ready: {event["enemy_type"]}')
