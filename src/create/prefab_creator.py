@@ -17,9 +17,9 @@ def create_square(ecs_world:esper.World, size:pygame.Vector2,
     ecs_world.add_component(cuad_entity, 
                 CVelocity(vel))
 
-def create_enemy_spawner(ecs_world:esper.World, events:list):
+def create_enemy_spawner(ecs_world: esper.World, events: list, enemies: list):
     spawner_entity = ecs_world.create_entity()
     ecs_world.add_component(
         spawner_entity,
-        CEnemySpawner(events)
+        CEnemySpawner(events, enemies)
     )
