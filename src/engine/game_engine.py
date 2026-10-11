@@ -34,6 +34,12 @@ class GameEngine:
         with open("assets/cfg/window.json", encoding="utf-8") as window_file:
             self.window_cfg = json.load(window_file)
 
+        with open("assets/cfg/enemies.json", encoding="utf-8") as enemies_file:
+            self.enemies_cfg = json.load(enemies_file)
+
+        with open("assets/cfg/level_01.json", encoding="utf-8") as level_file:
+            self.level_cfg = json.load(level_file)
+
     async def run(self) -> None:
         self._create()
         self.is_running = True
