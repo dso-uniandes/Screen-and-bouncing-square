@@ -5,6 +5,7 @@ import pygame
 from src.ecs.components.c_surface import CSurface
 from src.ecs.components.c_transform import CTransform
 from src.ecs.components.c_velocity import CVelocity
+from src.ecs.components.c_enemy_spawner import CEnemySpawner
 
 def create_square(ecs_world:esper.World, size:pygame.Vector2,
                     pos:pygame.Vector2, vel:pygame.Vector2, col:pygame.Color):
@@ -15,3 +16,10 @@ def create_square(ecs_world:esper.World, size:pygame.Vector2,
                 CTransform(pos))
     ecs_world.add_component(cuad_entity, 
                 CVelocity(vel))
+
+def create_enemy_spawner(ecs_world:esper.World, events:list):
+    spawner_entity = ecs_world.create_entity()
+    ecs_world.add_component(
+        spawner_entity,
+        CEnemySpawner(events)
+    )
