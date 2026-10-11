@@ -3,6 +3,7 @@ import pygame
 import math
 import random
 
+from src.create.prefab_creator import create_square
 from src.ecs.components.c_enemy_spawner import CEnemySpawner
 
 
@@ -52,6 +53,14 @@ def system_enemy_spawner(world: esper.World, delta_time: float):
                     velocity = pygame.Vector2(
                         math.cos(angle) * speed,
                         math.sin(angle) * speed
+                    )
+
+                    create_square(
+                        world,
+                        size,
+                        position,
+                        velocity,
+                        color
                     )
 
                     event["triggered"] = True
