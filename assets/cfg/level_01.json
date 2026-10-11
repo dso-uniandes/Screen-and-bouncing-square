@@ -1,0 +1,12 @@
+{
+    "events": [
+        {
+            "enemy_type": "enemy_1",
+            "time": 1.0,
+            "position": {
+                "x": 100,
+                "y": 100
+            }
+        }
+    ]
+}
