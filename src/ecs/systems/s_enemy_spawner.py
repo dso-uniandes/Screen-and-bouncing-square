@@ -1,4 +1,5 @@
 import esper
+import pygame
 
 from src.ecs.components.c_enemy_spawner import CEnemySpawner
 
@@ -23,5 +24,20 @@ def system_enemy_spawner(world: esper.World, delta_time: float):
                         break
 
                 if enemy_cfg is not None:
-                    print(f'Enemy found: {enemy_cfg["name"]}')
+                    size = pygame.Vector2(
+                        enemy_cfg["size"]["x"],
+                        enemy_cfg["size"]["y"]
+                    )
+
+                    position = pygame.Vector2(
+                        event["position"]["x"],
+                        event["position"]["y"]
+                    )
+
+                    color = pygame.Color(
+                        enemy_cfg["color"]["r"],
+                        enemy_cfg["color"]["g"],
+                        enemy_cfg["color"]["b"]
+                    )
+
                     event["triggered"] = True
