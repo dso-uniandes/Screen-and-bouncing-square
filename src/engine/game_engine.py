@@ -55,8 +55,8 @@ class GameEngine:
     def _create(self):
         create_enemy_spawner(
             self.ecs_world, 
-            self.level_cfg["events"],
-            self.enemies_cfg["enemies"]
+            self.level_cfg["enemy_spawn_events"],
+            self.enemies_cfg
         )
 
     def _calculate_time(self):

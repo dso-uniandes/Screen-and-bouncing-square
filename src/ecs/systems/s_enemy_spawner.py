@@ -19,12 +19,7 @@ def system_enemy_spawner(world: esper.World, delta_time: float):
                 continue
 
             if c_spawner.elapsed_time >= event["time"]:
-                enemy_cfg = None
-
-                for enemy in c_spawner.enemies:
-                    if enemy["name"] == event["enemy_type"]:
-                        enemy_cfg = enemy
-                        break
+                enemy_cfg = c_spawner.enemies.get(event["enemy_type"])
 
                 if enemy_cfg is not None:
                     size = pygame.Vector2(
@@ -44,8 +39,8 @@ def system_enemy_spawner(world: esper.World, delta_time: float):
                     )
 
                     speed = random.uniform(
-                        enemy_cfg["min_velocity"],
-                        enemy_cfg["max_velocity"]
+                        enemy_cfg["velocity_min"],
+                        enemy_cfg["velocity_max"]
                     )
 
                     angle = random.uniform(0, 2 * math.pi)

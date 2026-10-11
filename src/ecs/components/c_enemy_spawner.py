@@ -1,5 +1,5 @@
 class CEnemySpawner:
-    def __init__(self, events: list, enemies: list) -> None:
+    def __init__(self, events: list, enemies: dict) -> None:
         self.events = []
 
         for event in events:
