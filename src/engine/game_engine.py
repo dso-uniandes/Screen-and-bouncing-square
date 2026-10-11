@@ -3,7 +3,7 @@ import json
 import pygame
 import esper
 
-from src.create.prefab_creator import create_square
+from src.create.prefab_creator import create_enemy_spawner
 from src.ecs.systems.s_movement import system_movement
 from src.ecs.systems.s_rendering import system_rendering
 from src.ecs.systems.s_screen_bounce import system_screen_bounce
@@ -52,11 +52,10 @@ class GameEngine:
         self._clean()
 
     def _create(self):
-        create_square(self.ecs_world, 
-                        pygame.Vector2(50, 50),
-                        pygame.Vector2(150, 100),
-                        pygame.Vector2(-100, 200),
-                        pygame.Color(255, 255, 100))
+        create_enemy_spawner(
+            self.ecs_world, 
+            self.level_cfg["events"]
+        )
 
     def _calculate_time(self):
         self.clock.tick(self.framerate)
